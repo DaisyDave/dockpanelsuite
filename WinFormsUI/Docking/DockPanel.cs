@@ -810,14 +810,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal void RemoveFloatWindow(FloatWindow floatWindow)
         {
             if (!FloatWindows.Contains(floatWindow))
+            {
                 return;
+            }
 
             FloatWindows.Remove(floatWindow);
-            if (FloatWindows.Count != 0)
+            if ((FloatWindows.Count == 0) && (ParentForm == null))
+            {
                 return;
-
-            if (ParentForm == null) 
-                return;
+            }
 
             ParentForm.Focus();
         }
